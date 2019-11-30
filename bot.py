@@ -4,7 +4,7 @@ import random
 import traceback
 
 bot = commands.Bot(command_prefix='$', description='A bot that greets the user back.')
-TOKEN = 'NjMyMDg4NzY3NzYyNzkyNDU5.XdYevQ.hZP90gXjaeKn3fw5Q88gbIO73Rw'
+TOKEN = 'NjMyMDg4NzY3NzYyNzkyNDU5.XeJTdQ.3DV15s-0zO69oQBvcgjQDgsYYR4'
 
 cogs = [
     'cogs.help',

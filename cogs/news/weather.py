@@ -25,7 +25,7 @@ def today(api_data) -> str:
 def create_message(tenki,max_temp,text):
     td_9h = datetime.timedelta(hours=9)
     date = datetime.datetime.now()+td_9h
-    embed=discord.Embed(title="お天気情報", description=date.strftime('%m月%d日 ')+"新潟の天気", color=0x0080ff)
+    embed=discord.Embed(title="お天気情報", description=date.strftime('%m{0}%d{1}').format('月','日')+"新潟の天気", color=0x0080ff)
     embed.add_field(name="天気", value=tenki, inline=False)
     embed.add_field(name="最高気温", value=max_temp, inline=True)
     if '雨' in tenki:
