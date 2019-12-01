@@ -4,7 +4,6 @@ from .schedule import schedule
 from . import weather
 import datetime
 
-
 CHANNEL_ID = int(os.environ['CHANNEL_ID'])
 
 class News(commands.Cog):
@@ -23,8 +22,7 @@ class News(commands.Cog):
         date = datetime.datetime.now()
         today = int(date.strftime('%d'))
         embed = schedule.make_schedule_embed(today)     
-        await ctx.send(embed=embed)
-    
+        await ctx.send(embed=embed)  
 
     @tasks.loop(seconds=60)
     async def loop():

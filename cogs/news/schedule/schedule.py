@@ -29,19 +29,11 @@ def make_schedule_embed(today):
         embed.add_field(name='予定',value=schedule)
         
     else:
-        print(schedule_list[today-1])
         gen ,*schedule = schedule_list[today-1]
-        print("gen=",gen)
-        print("schedule=",schedule)
-        
-        
+                
         for g in range(int(gen)):
             kyousitsu = schedule[g][0]
             kamoku = schedule[g][1]
-
             embed.add_field(name=f'{g+1}限目', value=f'{kamoku}\n{kyousitsu}', inline=False)
-            
-        
+                   
     return embed
-
-

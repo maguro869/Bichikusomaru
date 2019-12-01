@@ -2,7 +2,6 @@ import requests
 import discord
 import datetime
 
-
 def get_API() -> dict:
     url = 'http://weather.livedoor.com/forecast/webservice/json/v1?city=150010'
     api_data = requests.get(url).json()

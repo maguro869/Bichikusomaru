@@ -4,9 +4,8 @@ import random
 import traceback
 import os
 
-bot = commands.Bot(command_prefix='$', description='A bot that greets the user back.')
+bot = commands.Bot(command_prefix='卍', description='ビチグソ丸')
 TOKEN = os.environ['DISCORD_BOT_TOKEN']
-CHANNEL_ID = int(os.environ['CHANNEL_ID'])
 
 cogs = [
     'cogs.help',
@@ -20,7 +19,6 @@ for cog in cogs:
         bot.load_extension(cog)
     except Exception:
         traceback.print_exc()
-
 
 @bot.command()
 async def hello(ctx):
@@ -47,7 +45,6 @@ async def roll(ctx,a,b,n):
 async def yn(ctx):
     yn_list = ['https://gph.is/2ud7xAC','https://gph.is/g/EqNGrd7']
     await ctx.send(random.choice(yn_list))
-
 
 @bot.event
 async def on_ready():
