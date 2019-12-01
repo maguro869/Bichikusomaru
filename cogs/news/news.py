@@ -2,9 +2,10 @@ import discord
 from discord.ext import commands,tasks
 from .schedule import schedule
 from . import weather
+import datetime
 
 
-CHANNEL_ID = 573116659225591824
+CHANNEL_ID = 647395880776761344
 
 class News(commands.Cog):
     def __init__(self,bot):
@@ -16,13 +17,14 @@ class News(commands.Cog):
         tenki,max_temp,text = weather.today(api_data)
         embed = weather.create_message(tenki,max_temp,text)
         await ctx.send(embed=embed)
-    
+
     @commands.command()
-    async def test():
-        date = datetime.datetime.now()+td_9h
+    async def test(self,ctx):
+        date = datetime.datetime.now()
         today = int(date.strftime('%d'))
-        embed = schedule.make_schedule_embed(today)
+        embed = schedule.make_schedule_embed(today)     
         await ctx.send(embed=embed)
+    
 
     @tasks.loop(seconds=60)
     async def loop():
