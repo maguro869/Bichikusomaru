@@ -2,9 +2,11 @@ from discord.ext import commands
 import discord
 import random
 import traceback
+import os
 
 bot = commands.Bot(command_prefix='$', description='A bot that greets the user back.')
-TOKEN = 'NjMyMDg4NzY3NzYyNzkyNDU5.XeJTdQ.3DV15s-0zO69oQBvcgjQDgsYYR4'
+TOKEN = os.environ['DISCORD_BOT_TOKEN']
+CHANNEL_ID = int(os.environ['CHANNEL_ID'])
 
 cogs = [
     'cogs.help',

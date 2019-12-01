@@ -5,7 +5,7 @@ from . import weather
 import datetime
 
 
-CHANNEL_ID = 647395880776761344
+CHANNEL_ID = int(os.environ['CHANNEL_ID'])
 
 class News(commands.Cog):
     def __init__(self,bot):
