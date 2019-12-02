@@ -8,8 +8,8 @@ class Help(commands.Cog):
     @commands.group(name="help")
     async def _help(self, ctx):
         if ctx.invoked_subcommand is None:
-            embed=discord.Embed(title="help",color=0x0080ff)
-            embed.add_field(name="**roll a b n**", value="a~bの範囲の値をn個表示します", inline=False)
+            embed=discord.Embed(title="help",description='コマンドの詳細はhelp 〇〇(コマンド名)',color=0x0080ff)
+            embed.add_field(name="**roll**", value="a~bの範囲の値をn個表示します", inline=False)
             embed.add_field(name="**yn**", value="YesかNoかを教えてくれます", inline=False)
             embed.add_field(name="**cat**", value=":cat: 猫の画像を表示します", inline=False)
             embed.add_field(name="**fox**", value=":fox: 狐の画像を表示します", inline=False)
@@ -21,7 +21,8 @@ class Help(commands.Cog):
     @_help.command()
     async def roll(self,ctx):
         embed=discord.Embed(title="help roll",color=0x0080ff)
-        embed.add_field(name="**roll a b n**", value="a~bの範囲の値をn個表示します", inline=False)
+        embed.add_field(name='roll num a b n',value='a~bの範囲の値をn個表示します')
+        embed.add_field(name='roll key a 候補1 候補2 … 候補n', value='n個の候補の中からa個選びます')
         await ctx.send(embed=embed)
     @_help.command()
     async def yn(self,ctx):
