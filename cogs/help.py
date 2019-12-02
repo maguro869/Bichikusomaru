@@ -46,13 +46,13 @@ class Help(commands.Cog):
     @_help.command()
     async def gif(self,ctx):
         embed=discord.Embed(title='help gif',color=0x0080ff)
-        embed.add_field(name='**gif keyword**',value='keywordに関連したgifを表示します')
+        embed.add_field(name='**gif keyword**',value='keywordに関連したgifを表示します', inline=False)
         await ctx.send(embed=embed)
     @_help.command()
     async def sche(self,ctx):
         embed=discord.Embed(title='help sche',color=0x0080ff)
-        embed.add_field(name='**sche**',value='今日の時間割を表示します\nsche todayでも動きます')
-        embed.add_field(name='**sche tomorrow**',value='明日の時間割を表示します')
+        embed.add_field(name='**sche**',value='今日の時間割を表示します\nsche todayでも動きます', inline=False)
+        embed.add_field(name='**sche tomorrow**',value='明日の時間割を表示します', inline=False)
         await ctx.send(embed=embed)
 def setup(bot):
     bot.remove_command('help')
