@@ -1,12 +1,15 @@
-from discord.ext import commands
+from discord.ext import commands,tasks
 import discord
 import random
 import traceback
 import os
+from cogs.news import weather
+from cogs.news.schedule import schedule
+import datetime
 
 bot = commands.Bot(command_prefix='b!', description='ビチクソ丸')
 TOKEN = os.environ['DISCORD_BOT_TOKEN']
-
+CHANNEL_ID = int(os.environ['CHANNEL_ID'])
 cogs = [
     'cogs.help',
     'cogs.animals',
@@ -40,5 +43,24 @@ async def on_command_error(ctx,error):
     embed.add_field(name="エラー発生コマンド", value='**'+ctx.message.content+'**\n\nそんなコマンドは無いよ :sob: \n**b!help**でコマンドを確認してみよう', inline=False)
     await ctx.send(embed=embed)
 
+@tasks.loop(seconds=5)
+async def loop():
+    await bot.wait_until_ready()
+    td_9h = datetime.timedelta(hours=9)
+    now = datetime.datetime.now()+td_9h
 
+    print(now.strftime('%H:%M'))
+    if now.strftime('%H:%M') == '07:00':
+        api_data = weather.get_API()
+        tenki,max_temp,text = weather.today(api_data)
+        embed = weather.create_message(tenki,max_temp,text)
+        channel = bot.get_channel(CHANNEL_ID)
+        await channel.send(embed=embed)
+    elif now.strftime('%H:%M') == '08:00':
+        date = datetime.datetime.now()+td_9h
+        today = int(date.strftime('%d'))
+        embed = schedule.make_schedule_embed(today)
+        channel = bot.get_channel(CHANNEL_ID)
+        await channel.send(embed=embed)
+loop.start()
 bot.run(TOKEN)

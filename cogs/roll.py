@@ -5,7 +5,6 @@ import random
 class Roll(commands.Cog):
     def __init__(self,bot):
         self.bot = bot
-        
 
     @commands.group(invoke_without_command=True)
     async def roll(self,ctx):
