@@ -5,8 +5,7 @@ import traceback
 import os
 
 bot = commands.Bot(command_prefix='b!', description='ビチクソ丸')
-#TOKEN = os.environ['DISCORD_BOT_TOKEN']
-TOKEN = 'NjMyMDg4NzY3NzYyNzkyNDU5.XeTILw.HsNrH7FaM_UCpFKbriRb8nfm56w'
+TOKEN = os.environ['DISCORD_BOT_TOKEN']
 
 cogs = [
     'cogs.help',
