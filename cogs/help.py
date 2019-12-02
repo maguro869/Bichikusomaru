@@ -8,7 +8,7 @@ class Help(commands.Cog):
     @commands.group(name="help")
     async def _help(self, ctx):
         if ctx.invoked_subcommand is None:
-            embed=discord.Embed(title="help",description='コマンドの詳細はhelp 〇〇(コマンド名)',color=0x0080ff)
+            embed=discord.Embed(title="help",description='それぞれのコマンド名の先頭に「**b!**」をつけて実行してね\nコマンドの詳細はhelp 〇〇(コマンド名)',color=0x0080ff)
             embed.add_field(name="**roll**", value="ロール機能です\n数字やキーワードをランダムで選出してくれます", inline=False)
             embed.add_field(name="**yn**", value="YesかNoかを教えてくれます", inline=False)
             embed.add_field(name="**cat**", value=":cat: 猫の画像を表示します", inline=False)

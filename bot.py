@@ -4,8 +4,9 @@ import random
 import traceback
 import os
 
-bot = commands.Bot(command_prefix='$', description='ビチグソ丸')
-TOKEN = os.environ['DISCORD_BOT_TOKEN']
+bot = commands.Bot(command_prefix='b!', description='ビチクソ丸')
+#TOKEN = os.environ['DISCORD_BOT_TOKEN']
+TOKEN = 'NjMyMDg4NzY3NzYyNzkyNDU5.XeTILw.HsNrH7FaM_UCpFKbriRb8nfm56w'
 
 cogs = [
     'cogs.help',
@@ -32,5 +33,13 @@ async def on_ready():
     print(bot.user.name)
     print(bot.user.id)
     print('------')
+    await bot.change_presence(activity=discord.Game(name="b!helpでヘルプが見れるよ"))
+
+@bot.event
+async def on_command_error(ctx,error):
+    embed = discord.Embed(title="エラー情報", description="", color=0x0080ff)
+    embed.add_field(name="エラー発生コマンド", value='**'+ctx.message.content+'**\n\nそんなコマンドは無いよ :sob: \n**b!help**でコマンドを確認してみよう', inline=False)
+    await ctx.send(embed=embed)
+
 
 bot.run(TOKEN)

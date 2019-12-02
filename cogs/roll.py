@@ -28,7 +28,7 @@ class Roll(commands.Cog):
         else:
             li = [i for i in range(a,b+1)]
             res = random.sample(li,n)
-            embed.add_field(name="roll結果", value=res, inline=False)
+            embed.add_field(name="roll結果", value=sorted(res), inline=False)
         await ctx.send(embed=embed)
     
     @roll.command()
