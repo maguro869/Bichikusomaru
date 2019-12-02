@@ -22,15 +22,18 @@ class News(commands.Cog):
     async def sche(self,ctx):
         # invoke_without_command=True -> サブコマンド有無判定
         # True -> サブコマンドない時のみ実行
-        date = datetime.datetime.now()
-        today = int(date.strftime('%d'))
+        
+        td_9h = datetime.timedelta(hours=9)
+        now = datetime.datetime.now()+td_9h
+        today = int(now.strftime('%d'))
         embed = schedule.make_schedule_embed(today)     
         await ctx.send(embed=embed) 
 
     @sche.command()
     async def today(self,ctx):
-        date = datetime.datetime.now()
-        today = int(date.strftime('%d'))
+        td_9h = datetime.timedelta(hours=9)
+        now = datetime.datetime.now()+td_9h
+        today = int(now.strftime('%d')
         embed = schedule.make_schedule_embed(today)     
         await ctx.send(embed=embed) 
     
