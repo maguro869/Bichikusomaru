@@ -3,8 +3,9 @@ from discord.ext import commands,tasks
 from .schedule import schedule
 from . import weather
 import datetime
+import os
 
-CHANNEL_ID = int(os.environ['CHANNEL_ID'])
+#CHANNEL_ID = int(os.environ['CHANNEL_ID'])
 
 class News(commands.Cog):
     def __init__(self,bot):
@@ -16,17 +17,30 @@ class News(commands.Cog):
         tenki,max_temp,text = weather.today(api_data)
         embed = weather.create_message(tenki,max_temp,text)
         await ctx.send(embed=embed)
+ 
 
-    @commands.command()
-    async def test(self,ctx):
+    @commands.group()
+    async def sche(self,ctx):
+        pass
+
+    @sche.command()
+    async def today(self,ctx):
         date = datetime.datetime.now()
         today = int(date.strftime('%d'))
         embed = schedule.make_schedule_embed(today)     
-        await ctx.send(embed=embed)  
-
+        await ctx.send(embed=embed) 
+    
+    @sche.command()
+    async def tomorrow(self,ctx):
+        date = datetime.datetime.now()
+        today = int(date.strftime('%d')) + 1
+        print(today)
+        embed = schedule.make_schedule_embed(today)     
+        await ctx.send(embed=embed) 
+    
     @tasks.loop(seconds=60)
-    async def loop():
-        await client.wait_until_ready()
+    async def loop(self):
+        await bot.wait_until_ready()
         td_9h = datetime.timedelta(hours=9)
         now = datetime.datetime.now()+td_9h
         
@@ -45,3 +59,5 @@ class News(commands.Cog):
 
 def setup(bot):
     bot.add_cog(News(bot))
+
+

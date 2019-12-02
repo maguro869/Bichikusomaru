@@ -24,13 +24,13 @@ def make_schedule_list():
 def make_schedule_embed(today):
     schedule_list = make_schedule_list()
     embed=discord.Embed(title="講義情報")
+    
     if len(schedule_list[today-1]) == 2:
         schedule = schedule_list[today-1]
         embed.add_field(name='予定',value=schedule)
         
     else:
         gen ,*schedule = schedule_list[today-1]
-                
         for g in range(int(gen)):
             kyousitsu = schedule[g][0]
             kamoku = schedule[g][1]
