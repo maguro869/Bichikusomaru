@@ -33,7 +33,7 @@ class News(commands.Cog):
     async def today(self,ctx):
         td_9h = datetime.timedelta(hours=9)
         now = datetime.datetime.now()+td_9h
-        today = int(now.strftime('%d')
+        today = int(now.strftime('%d'))
         embed = schedule.make_schedule_embed(today)     
         await ctx.send(embed=embed) 
     
