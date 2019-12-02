@@ -4,7 +4,7 @@ import random
 import traceback
 import os
 
-bot = commands.Bot(command_prefix='卍', description='ビチグソ丸')
+bot = commands.Bot(command_prefix='$', description='ビチグソ丸')
 TOKEN = os.environ['DISCORD_BOT_TOKEN']
 
 cogs = [

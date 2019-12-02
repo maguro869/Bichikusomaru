@@ -38,7 +38,6 @@ class News(commands.Cog):
     async def tomorrow(self,ctx):
         date = datetime.datetime.now()
         today = int(date.strftime('%d')) + 1
-        print(today)
         embed = schedule.make_schedule_embed(today)     
         await ctx.send(embed=embed) 
     

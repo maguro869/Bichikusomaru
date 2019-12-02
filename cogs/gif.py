@@ -5,7 +5,7 @@ import json
 import os
 import random
 
-#GIF_API_KEY  =os.environ['GIF_BOT_TOKEN']
+GIF_API_KEY  = os.environ['GIF_BOT_TOKEN']
 class Gif(commands.Cog):
     def __init__(self,bot):
         self.bot = bot

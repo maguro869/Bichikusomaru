@@ -10,8 +10,8 @@ class Roll(commands.Cog):
     @commands.group(invoke_without_command=True)
     async def roll(self,ctx):
         embed = discord.Embed(color=0x0080ff)
-        embed.add_field(name='roll num a b n',value='a~bの範囲の値をn個表示します')
-        embed.add_field(name='roll key a 候補1 候補2 … 候補n', value='n個の候補の中からa個選びます')
+        embed.add_field(name='roll num a b n',value='a~bの範囲の値をn個表示します',inline=False)
+        embed.add_field(name='roll key a 候補1 候補2 … 候補n', value='n個の候補の中からa個選びます',inline=False)
         await ctx.send(embed=embed)
 
     @roll.command()
@@ -31,7 +31,7 @@ class Roll(commands.Cog):
             embed.add_field(name="roll結果", value=res, inline=False)
         await ctx.send(embed=embed)
     
-    @roll.command
+    @roll.command()
     async def key(self,ctx,a,*key):
         a = int(a)
         embed = discord.Embed(color=0x0080ff)
