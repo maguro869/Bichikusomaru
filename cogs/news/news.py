@@ -21,7 +21,13 @@ class News(commands.Cog):
 
     @commands.group()
     async def sche(self,ctx):
-        pass
+        # サブコマンド有無判定
+        if ctx.invoked_subcommand is None:
+            date = datetime.datetime.now()
+            today = int(date.strftime('%d'))
+            embed = schedule.make_schedule_embed(today)     
+            await ctx.send(embed=embed) 
+        
 
     @sche.command()
     async def today(self,ctx):
