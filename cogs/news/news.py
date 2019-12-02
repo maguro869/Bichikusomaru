@@ -5,7 +5,7 @@ from . import weather
 import datetime
 import os
 
-#CHANNEL_ID = int(os.environ['CHANNEL_ID'])
+CHANNEL_ID = int(os.environ['CHANNEL_ID'])
 
 class News(commands.Cog):
     def __init__(self,bot):
@@ -17,16 +17,16 @@ class News(commands.Cog):
         tenki,max_temp,text = weather.today(api_data)
         embed = weather.create_message(tenki,max_temp,text)
         await ctx.send(embed=embed)
- 
 
-    @commands.group()
+
+    @commands.group(invoke_without_command=True)
     async def sche(self,ctx):
-        # サブコマンド有無判定
-        if ctx.invoked_subcommand is None:
-            date = datetime.datetime.now()
-            today = int(date.strftime('%d'))
-            embed = schedule.make_schedule_embed(today)     
-            await ctx.send(embed=embed) 
+        # invoke_without_command=True -> サブコマンド有無判定
+        # True -> サブコマンドない時のみ実行
+        date = datetime.datetime.now()
+        today = int(date.strftime('%d'))
+        embed = schedule.make_schedule_embed(today)     
+        await ctx.send(embed=embed) 
         
 
     @sche.command()
