@@ -1,6 +1,7 @@
 import requests
 import discord
 import datetime
+import pytz
 
 def get_API() -> dict:
     url = 'http://weather.livedoor.com/forecast/webservice/json/v1?city=150010'
@@ -22,8 +23,7 @@ def today(api_data) -> str:
     return tenki,max_temp,text
 
 def create_message(tenki,max_temp,text):
-    td_9h = datetime.timedelta(hours=9)
-    date = datetime.datetime.now()+td_9h
+    date = datetime.datetime.now(pytz.timezone('Asia/Tokyo'))
     embed=discord.Embed(title="お天気情報", description=date.strftime('%m{0}%d{1}').format('月','日')+"新潟の天気", color=0x0080ff)
     embed.add_field(name="天気", value=tenki, inline=False)
     embed.add_field(name="最高気温", value=max_temp, inline=True)
