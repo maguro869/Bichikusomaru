@@ -6,6 +6,7 @@ import os
 from cogs.news import weather
 from cogs.news.schedule import schedule
 import datetime
+import pytz
 
 bot = commands.Bot(command_prefix='b!', description='ビチクソ丸')
 TOKEN = os.environ['DISCORD_BOT_TOKEN']
@@ -46,8 +47,7 @@ async def on_command_error(ctx,error):
 @tasks.loop(seconds=60)
 async def loop():
     await bot.wait_until_ready()
-    td_9h = datetime.timedelta(hours=9)
-    now = datetime.datetime.now()+td_9h
+    now = datetime.datetime.now(pytz.timezone('Asia/Tokyo'))
 
     print(now.strftime('%H:%M'))
     if now.strftime('%H:%M') == '07:00':
