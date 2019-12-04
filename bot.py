@@ -44,6 +44,7 @@ async def on_command_error(ctx,error):
     embed.add_field(name="エラー発生コマンド", value='**'+ctx.message.content+'**\n\nそんなコマンドは無いよ :sob: \n**b!help**でコマンドを確認してみよう', inline=False)
     await ctx.send(embed=embed)
 
+# 毎日するループ
 @tasks.loop(seconds=60)
 async def loop():
     await bot.wait_until_ready()
