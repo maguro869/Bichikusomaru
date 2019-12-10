@@ -62,5 +62,10 @@ async def loop():
         embed = schedule.make_schedule_embed(today)
         channel = bot.get_channel(CHANNEL_ID)
         await channel.send(embed=embed)
+    elif now.strftime('%H:%M') == '22:00':
+        today = int(now.strftime('%d'))+1
+        embed = schedule.make_schedule_embed(today)
+        channel = bot.get_channel(CHANNEL_ID)
+        await channel.send(embed=embed)
 loop.start()
 bot.run(TOKEN)
