@@ -2,11 +2,15 @@ import requests
 import discord
 import datetime
 import pytz
+import aiohttp
 
 def get_API() -> dict:
     url = 'http://weather.livedoor.com/forecast/webservice/json/v1?city=150010'
-    api_data = requests.get(url).json()
-    return api_data
+    async with aiohttp.ClientSession() as session:
+        async with session.get(url) as res:
+            if res.status == 200:
+                api_data = res.json()
+                return api_data
 
 def today(api_data) -> str:
     forecasts = api_data['forecasts']

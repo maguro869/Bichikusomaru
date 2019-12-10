@@ -35,5 +35,4 @@ def make_schedule_embed(today):
             kyousitsu = schedule[g][0]
             kamoku = schedule[g][1]
             embed.add_field(name=f'{g+1}限目', value=f'{kamoku}\n{kyousitsu}', inline=False)
-                   
     return embed
