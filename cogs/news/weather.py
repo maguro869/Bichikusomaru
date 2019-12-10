@@ -9,7 +9,7 @@ def get_API() -> dict:
     async with aiohttp.ClientSession() as session:
         async with session.get(url) as res:
             if res.status == 200:
-                api_data = res.json()
+                api_data = await res.json()
                 return api_data
 
 def today(api_data) -> str:
