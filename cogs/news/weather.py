@@ -4,7 +4,7 @@ import datetime
 import pytz
 import aiohttp
 
-def get_API() -> dict:
+async def get_API() -> dict:
     url = 'http://weather.livedoor.com/forecast/webservice/json/v1?city=150010'
     async with aiohttp.ClientSession() as session:
         async with session.get(url) as res:
@@ -12,7 +12,7 @@ def get_API() -> dict:
                 api_data = await res.json()
                 return api_data
 
-def today(api_data) -> str:
+async def today(api_data) -> str:
     forecasts = api_data['forecasts']
     text = api_data['description']['text']
     for f in forecasts:
