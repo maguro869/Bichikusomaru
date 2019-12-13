@@ -13,7 +13,7 @@ class News(commands.Cog):
     
     @commands.command()
     async def w(self,ctx):
-        api_data = weather.get_API()
+        api_data = await weather.get_API()
         tenki,max_temp,text = weather.today(api_data)
         embed = weather.create_message(tenki,max_temp,text)
         await ctx.send(embed=embed)
