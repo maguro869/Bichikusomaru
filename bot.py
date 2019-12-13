@@ -53,7 +53,7 @@ async def loop():
     print(now.strftime('%H:%M'))
     # 7時天気
     if now.strftime('%H:%M') == '07:00':
-        api_data = weather.get_API()
+        api_data = await weather.get_API()
         tenki,max_temp,text = weather.today(api_data)
         embed = weather.create_message(tenki,max_temp,text)
         channel = bot.get_channel(CHANNEL_ID)
