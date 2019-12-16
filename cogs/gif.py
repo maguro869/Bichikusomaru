@@ -13,13 +13,12 @@ class Gif(commands.Cog):
     
     @commands.command()
     async def gif(self,ctx,keyword):
-        await ctx.send(keyword)
         url = f'https://api.giphy.com/v1/gifs/random?api_key={GIF_API_KEY}&tag={keyword}&rating=g'
         async with aiohttp.ClientSession() as session:
             async with session.get(url) as res:
                 if res.status == 200:
                     gif_url = await res.json()['data']['images']['original']['url']
-                    embed = discord.Embed(title=key,color=0x0080ff)
+                    embed = discord.Embed(title=keyword,color=0x0080ff)
                     embed.set_image(url=gif_url)
                     await ctx.send(embed=embed)
         
