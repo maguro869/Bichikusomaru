@@ -12,8 +12,8 @@ class Gif(commands.Cog):
         self.bot = bot
     
     @commands.command()
-    async def gif(self,ctx,key):
-        url = f'https://api.giphy.com/v1/gifs/random?api_key={GIF_API_KEY}&tag={key}&rating=g'
+    async def gif(self,ctx,keyword):
+        url = f'https://api.giphy.com/v1/gifs/random?api_key={GIF_API_KEY}&tag={keyword}&rating=g'
         async with aiohttp.ClientSession() as session:
             async with session.get(url) as res:
                 if res.stats == 200:
