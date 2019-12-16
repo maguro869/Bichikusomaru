@@ -17,7 +17,7 @@ class Gif(commands.Cog):
         async with aiohttp.ClientSession() as session:
             async with session.get(url) as res:
                 if res.status == 200:
-                    gif_url = await res.json()['data']['images']['original']['url']
+                    gif_url = (await res.json())['data']['images']['original']['url']
                     embed = discord.Embed(title=keyword,color=0x0080ff)
                     embed.set_image(url=gif_url)
                     await ctx.send(embed=embed)
