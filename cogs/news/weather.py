@@ -12,7 +12,7 @@ async def get_API() -> dict:
                 api_data = await res.json()
                 return api_data
 
-async def today(api_data) -> str:
+def today(api_data) -> str:
     forecasts = api_data['forecasts']
     text = api_data['description']['text']
     for f in forecasts:
