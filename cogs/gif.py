@@ -13,6 +13,7 @@ class Gif(commands.Cog):
     
     @commands.command()
     async def gif(self,ctx,keyword):
+        await ctx.send(keyword)
         url = f'https://api.giphy.com/v1/gifs/random?api_key={GIF_API_KEY}&tag={keyword}&rating=g'
         async with aiohttp.ClientSession() as session:
             async with session.get(url) as res:
