@@ -22,18 +22,21 @@ def make_schedule_list():
 
     return schedule_list
 
-def make_schedule_embed(today):
+def make_schedule_embed(day):
     schedule_list = make_schedule_list()
     date = datetime.datetime.now(pytz.timezone('Asia/Tokyo'))
+    today = int(date.strftime('%d'))
+    date += datetime.timedelta(days=day-today)
+    
     date_info = date.strftime('%m{0}%d{1}').format('月','日')
     embed=discord.Embed(title=f"{date_info} 講義情報")
     
-    if len(schedule_list[today-1]) == 2:
-        schedule = schedule_list[today-1]
+    if len(schedule_list[day-1]) == 2:
+        schedule = schedule_list[day-1]
         embed.add_field(name='予定',value=schedule)
         
     else:
-        gen ,*schedule = schedule_list[today-1]
+        gen ,*schedule = schedule_list[day-1]
         for g in range(int(gen)):
             kyousitsu = schedule[g][0]
             kamoku = schedule[g][1]
