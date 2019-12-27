@@ -43,7 +43,17 @@ async def on_command_error(ctx,error):
     embed = discord.Embed(title="エラー情報", description="", color=0x0080ff)
     embed.add_field(name="エラー発生コマンド", value='**'+ctx.message.content+'**\n\nそんなコマンドは無いよ :sob: \n**b!help**でコマンドを確認してみよう', inline=False)
     await ctx.send(embed=embed)
+import socket
+# ホスト名を取得、表示
+host = socket.gethostname()
+print(host)
 
+# ipアドレスを取得、表示
+ip = socket.gethostbyname(host)
+print(ip)
+@bot.command()
+async def ipv4(ctx):
+    await ctx.send(ip)
 # 毎日するループ
 @tasks.loop(seconds=60)
 async def loop():
